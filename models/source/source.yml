@@ -9,6 +9,8 @@ sources:
       - name: opportunity
       - name: lead
       - name: user
+      - name: old_case
+      - name: old_contact
+      - name: campaign
       - name: case
       - name: contact
-      - name: campaign

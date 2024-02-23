@@ -29,7 +29,7 @@ models:
             - unique
             - not_null
 
-    - name: salesforce_case
+    - name: salesforce_old_case
       columns:
         - name: id
           tests:
@@ -43,9 +43,23 @@ models:
             - unique
             - not_null
 
-    - name: salesforce_contact
+    - name: salesforce_old_contact
       columns:
         - name: id
+          tests:
+            - unique
+            - not_null
+
+    - name: salesforce_case
+      columns:
+        - name: Case_id
+          tests:
+            - unique
+            - not_null
+
+    - name: salesforce_contact
+      columns:
+        - name: Contact_Id
           tests:
             - unique
             - not_null

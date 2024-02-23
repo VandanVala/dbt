@@ -1,7 +1,9 @@
 SELECT
-    Contact_Id,
-	Account_Id,
-	Owner_Id,
+    Id AS Id,
+	AccountId,
+	OwnerId,
+	CreatedById,
+	LastModifiedById,
 	Name,
 	Salutation,
 	Phone,
@@ -15,7 +17,10 @@ SELECT
 	Description,
 	CreatedDate,
 	LastModifiedDate,
-	Level__c,
+	SystemModstamp,
+	LastViewedDate,
+	LastReferencedDate,
+	Level,
 	Languages,
 	Street
-FROM {{source('Salesforce','contact')}}
+FROM {{source('Salesforce','old_contact')}}

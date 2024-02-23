@@ -1,5 +1,5 @@
 SELECT
-    Id as id,
+    Id AS Id,
 	Name,
 	Type,
 	Status,
