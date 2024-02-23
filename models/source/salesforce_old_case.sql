@@ -1,4 +1,3 @@
--- old case details
 SELECT
     Id AS Id,
 	CaseNumber ,
