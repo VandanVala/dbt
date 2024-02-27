@@ -5,8 +5,8 @@ sources:
     database: Salesforce
     schema: public
     tables:
-      - name: account
-      - name: opportunity
+      - name: old_account
+      - name: old_opportunity
       - name: lead
       - name: user
       - name: old_case

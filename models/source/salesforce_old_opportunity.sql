@@ -22,4 +22,4 @@ SELECT
     "CurrentGenerators__c",
     "TrackingNumber__c",
     "MainCompetitors__c"
-FROM {{source('Salesforce','opportunity')}}
+FROM {{source('Salesforce','old_opportunity')}}

@@ -31,4 +31,4 @@ SELECT
     "UpsellOpportunity__c",
     "SLASerialNumber__c",
     "SLAExpirationDate__c"
-FROM {{source('Salesforce','account')}}
+FROM {{source('Salesforce','old_account')}}

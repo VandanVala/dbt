@@ -3,7 +3,7 @@ version: 2
 models:
     - name: opportunity_analysis
       columns:
-        - name: opportunity_id
+        - name: salesforce_opportunity_id
           tests:
             - unique
             - not_null
