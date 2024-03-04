@@ -1,6 +1,20 @@
 version: 2
 
 models:
+    - name: lead_source_analysis
+      columns:
+        - name: salesforce_old_opportunity_id
+          tests:
+            - unique
+            - not_null
+
+    - name: case_analysis
+      columns:
+        - name: salesforce_case_id
+          tests:
+            - unique
+            - not_null
+
     - name: opportunity_analysis
       columns:
         - name: salesforce_opportunity_id

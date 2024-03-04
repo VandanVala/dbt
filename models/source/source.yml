@@ -14,3 +14,6 @@ sources:
       - name: campaign
       - name: case
       - name: contact
+      - name: account
+      - name: opportunity
+      

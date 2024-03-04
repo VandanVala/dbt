@@ -1,6 +1,6 @@
-WITH dim_opportunity AS (
+WITH dim_crm_old_opportunity AS (
     SELECT
-        salesforce_old_opportunity.Id                                    AS salesforce_opportunity_id,
+        salesforce_old_opportunity.Id                                    AS salesforce_old_opportunity_id,
         salesforce_old_opportunity."CreatedDate"                         AS salesforce_opportunity_created_date,                       
         salesforce_old_opportunity."SystemModstamp"                      as salesforce_opportunity_systemmodstamp,
         salesforce_old_opportunity."Name"                                as salesforce_opportunity_name,
@@ -22,7 +22,7 @@ WITH dim_opportunity AS (
         ON salesforce_old_opportunity."OwnerId" = salesforce_user.id
 )
 
-SELECT * FROM dim_opportunity
+SELECT * FROM dim_crm_old_opportunity
 
 
 

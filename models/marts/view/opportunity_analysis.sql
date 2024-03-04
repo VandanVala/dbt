@@ -1,45 +1,24 @@
-WITH opportunity_analysis_view AS (
+WITh opportunity_analysis_view AS (
     SELECT
-        salesforce_opportunity_id,
-        salesforce_opportunity_created_date,                       
-        salesforce_opportunity_systemmodstamp,
-        salesforce_opportunity_name,
-        salesforce_opportunity_type,
-        salesforce_opportunity_stage_name,
-        salesforce_opportunity_amount,
-        salesforce_opportunity_source_name,
-        salesforce_opportunity_ownerId,
-        salesforce_opportunity_CreatedById,
-        salesforce_opportunity_account_id,
-        salesforce_opportunity_Expected_Revenue,
-        salesforce_opportunity_close_date,
-        salesforce_opportunity_fiscal_quarter,
-        salesforce_opportunity_fiscal_year,
-        salesforce_opportunity_owner_name,
+        dim_crm_opportunity.opportunity_id                                     AS salesforce_opportunity_id,
+        dim_crm_opportunity.account_id                                         AS salesforce_opportunity_account_id,
+        dim_crm_opportunity.StageName                                          AS salesforce_opportunity_stage_name,
+        dim_crm_opportunity.Amount                                             AS salesforce_opportunity_amount,
+        dim_crm_opportunity.DeliveryInstallationStatus__c                      AS salesforce_opportunity_delivery_status,
+        dim_crm_opportunity.opportunity_date                                   AS salesforce_opportunity_date,
+        dim_crm_opportunity.LeadSource                                         AS salesforce_opportunity_lead_source,
 
-        salesforce_account_name                           AS opportunity_account_name,
-        salesforce_account_ownership                      AS opportunity_account_ownership,
-        salesforce_account_ownerId                        AS opportunity_account_ownerId,
-        salesforce_account_owner_name                     AS opportunity_account_owner_name,
-        salesforce_account_priority                       AS opportunity_account_priority,
-        salesforce_account_is_active                      AS opportunity_account_is_active,
-        salesforce_account_number_of_employees            AS opportunity_account_number_of_employees,
-        salesforce_account_number_of_locations            AS opportunity_account_number_of_locations,
-        salesforce_account_upsell_opportunity             AS opportunity_account_upsell_opportunity,
-        salesforce_account_sla_sereial_number             AS opportunity_account_sla_sereial_number,
-        salesforce_account_sla_expiration_date            AS opportunity_account_sla_expiration_date,
-        salesforce_account_created_date                   AS opportunity_account_created_date,
-        salesforce_aacount_type                           AS opportunity_aacount_type,
-        salesforce_aacount_annual_revenue                 AS opportunity_aacount_annual_revenue,
-        salesforce_account_rating                         AS opportunity_account_rating,
-        salesforce_account_createdby_id                   AS opportunity_account_createdby_id
+        dim_crm_account.account_country                                        AS salesforce_opportunity_country,
+        dim_crm_account.Industry                                               AS salesforce_opportunity_account_industry,
+        dim_crm_account.NumberOfEmployees                                      AS salesforce_opportunity_account_number_of_employees
 
-    FROM {{ref('dim_old_opportunity')}}
-    LEFT JOIN {{ref('dim_old_account')}}
-        ON dim_old_opportunity.salesforce_opportunity_account_id = dim_old_account.salesforce_account_id
+        ,COALESCE(inter_total_contact_per_account.total_contact_per_account,0)                 AS salesforce_opportunity_account_total_contact
 
+    FROM {{ref("dim_crm_opportunity")}}
+    LEFT JOIN {{ref('dim_crm_account')}}
+        ON dim_crm_opportunity.account_id = dim_crm_account.account_id
+    LEFT JOIN {{ref('inter_total_contact_per_account')}}
+        ON dim_crm_account.account_id = inter_total_contact_per_account.Account_Id
 )
 
 SELECT * FROM opportunity_analysis_view
-
-

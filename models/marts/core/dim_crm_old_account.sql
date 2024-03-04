@@ -1,4 +1,4 @@
-WITH dim_account AS (
+WITH dim_crm_old_account AS (
     SELECT
         salesforce_old_account.Id                                      AS salesforce_account_id,
         salesforce_old_account."Name"                                    as salesforce_account_name,
@@ -23,4 +23,4 @@ WITH dim_account AS (
         ON salesforce_old_account."OwnerId" = salesforce_user.Id
 )
 
-SELECT * FROM dim_account
+SELECT * FROM dim_crm_old_account

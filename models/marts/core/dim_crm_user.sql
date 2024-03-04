@@ -1,4 +1,4 @@
-WITH dim_user AS (
+WITH dim_crm_user AS (
     SELECT
         salesforce_user.Id                          AS salesforce_user_id,
         salesforce_user."Name"                        AS salesforce_user_name,
@@ -7,4 +7,4 @@ WITH dim_user AS (
 
     FROM {{ref('salesforce_user')}}
 )
-SELECT * FROM dim_user
+SELECT * FROM dim_crm_user
